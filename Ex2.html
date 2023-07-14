@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Olá, mundo!</title>
+  </head>
+  <body>
+    <main class="container">
+      <div class="col-6 form-group">
+        <label>Salario</label>
+        <input type="text" class="form-control" id="txtnumero1" onblur="valida1"/>
+        <span id="textotxtnumero1"></span>
+    </div>
+      <div class="col-6 form-group">
+          <label>Valor do emprestimo</label>
+          <input type="text" class="form-control" id="txtnumero2"/>
+          <span id="textotxtnumero2"></span>
+    </div>
+    <div class="col-6 form-group">
+      <label>Prestação</label>
+      <input type="text" class="form-control" id="txtnumero3"/>
+      <span id="textotxtnumero3"></span>
+</div>
+<div class="col-12">
+  <input type="button" class="btn btn-success"
+  value="Divisão" onclick="calcularDiv()"/>
+</div>
+<div class="col-12">
+  <input type="button" class="btn btn-success"
+  value="30%" onclick="Porcentagem()"/>
+</div>
+<div class="col-12">
+  <input type="button" class="btn btn-success"
+  value="Validação de emprestimo" onclick="CalculoDeTaxa()"/>
+</div>
+<div class="col-6 form-group">
+  <label>Valor Prestação</label>
+  <input type="text" readonly 
+  class="form-control" id="txtresultado1"/>
+</div>
+<div class="col-6 form-group">
+  <label>30% do salario bruto</label>
+  <input type="text" readonly 
+  class="form-control" id="txtresultado2"/>
+</div>
+  
+    </main>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      function calcularDiv(){
+        var n1, n2, resultado, validan1, validan2 ;
+        n1 = document.getElementById("txtnumero2").value;
+        n2 = document.getElementById("txtnumero3").value;
+        //validar os campos
+        validan1 = isNaN(n1);
+        validan2 = isNaN(n2);
+        if(validan1== false && validan2==false && n1!="" && n2!=""){
+          n1 = parseFloat(n1);
+          n2 = parseFloat(n2);
+          resultado =  n1 / n2;
+          document.getElementById("txtresultado1").value = resultado;
+          //alert("Resultado: " + resultado);
+        }
+        else alert("Informe somente valores numéricos")
+      }
+    </script>
+  <script>
+    function Porcentagem(){
+      var n1, resultado, validan1;
+     n1 = document.getElementById("txtnumero1").value;
+      //validar
+      validan1 = isNaN(n1);
+      if(validan1== false && n1!=""){
+      resultado = n1 * 0.3;
+      document.getElementById("txtresultado2").value = resultado;
+      }
+    }
+  </script>
+  <script>
+    function CalculoDeTaxa(){
+      var n1, n2, validan1, validan2;
+      n1 = document.getElementById("txtresultado1").value;
+      n2 = document.getElementById("txtresultado2").value;
+      validan1 = isNaN(n1);
+      validan2 = isNaN(n2);
+      if(n1 < n2){
+        alert("Nao aprovado!");
+      }
+      else alert("Aprovado!!")
+    }
+  </script>
+  </body>
+</html>

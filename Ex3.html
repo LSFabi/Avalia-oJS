@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Olá, mundo!</title>
+  </head>
+  <body>
+   <main>
+    <div class="col-6 form-group">
+      <label>Peso</label>
+      <input type="text" class="form-control" id="txtnumero1" onblur="valida1"/>
+      <span id="textotxtnumero1"></span>
+  </div>
+  <select id="ddlViewBy">
+      <option value="1">Mercurio</option>
+      <option value="2">Venus</option>
+      <option value="3">Marte</option>
+      <option value="4">Jupiter</option>
+      <option value="5">Saturno</option>
+      <option value="6">Urano</option>
+    </select>
+    <div class="col-12">
+      <input type="button" class="btn btn-success"
+      value="Calcular Peso" onclick="calcularPeso()"/>
+  </div>
+  <div class="col-6 form-group">
+    <label>Resultado</label>
+    <input type="text" readonly 
+    class="form-control" id="txtresultado"/>
+</div>
+   </main> 
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      function calcularPeso(){
+        var resultado, n1, gravidade, validan1, validagravidade;
+        n1 = document.getElementById("txtnumero1").value;
+        gravidade = document.getElementById("ddlViewBy").value;
+        validan1 = isNaN(n1);
+        validagravidade = isNaN(gravidade);
+        if(gravidade=="1"){
+         resultado = (n1 / 10) * 0.37;
+        else
+          if(gravidade=="2"){
+            resultado = (n1 / 10) * 0.88;
+        
+          else
+            if(gravidade=="3"){
+              resultado = (n1 / 10) * 0.38;
+          
+            else
+              if(gravidade=="4"){
+                resultado = (n1 / 10) * 2.64;
+          
+              else
+                if(gravidade=="5"){
+                  resultado = (n1 / 10) * 1.15;
+              
+                  else
+                  if(gravidade=="6"){
+                    resultado = (n1 / 10) * 1.17;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      
+           document.getElementById("txtresultado").value = resultado;
+    </script>
+  </body>
+</html>
